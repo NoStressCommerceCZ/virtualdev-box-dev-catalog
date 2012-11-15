@@ -36,7 +36,7 @@ That will create new VM and run puppet provisioner. It can take a while.
 
 You should check that everything is corretly installed.
 
-### Export a BOX
+### Export a box
 
 Run vagrant command for create a vagrant box. 
 First stop running VM if you havent already stopped it
