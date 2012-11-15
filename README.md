@@ -53,7 +53,7 @@ First stop running VM if you havent already stopped it
 
 	vagrant halt
 	
-Pack new box
+and pack new box
 
 	vagrant package --base virtualdev-box-dev-catalog --output virtualdev-box-dev-catalog.box
 	
