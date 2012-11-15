@@ -17,6 +17,16 @@ The following packages are installed into final box
 
 ## How to build a box
 
+### Clone the repository
+You can clone the repository with command
+
+	git://github.com/NoStressCommerceCZ/virtualdev-box-dev-catalog.git
+	
+and don't forget to switch inside
+
+	cd virtualdev-box-dev-catalog
+
+
 ### Download all dependenciences
 
 You need to download all puppet modules and 3rd party archives
