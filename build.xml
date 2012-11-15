@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="virtualdev-catalogue">
+
+
+	<property name="puppet.modules.location" location="${basedir}/puppet/modules" />
+	<property name="git.bin" location="C:\home\Git\bin\git.exe" />
+	
+	<property name="es_version" value="0.19.11" />
+	<property name="es_tarchive" value="elasticsearch-${es_version}.tar.gz" />
+	<property name="es_source" value="http://cloud.github.com/downloads/elasticsearch/elasticsearch" />
+	
+	
+	<target name="build-box">
+	
+		<exec executable="cmd" osfamily="windows">
+	     <arg value="/c"/>
+	     <arg value="vagrant"/>
+	     <arg value="-v"/>
+		</exec>
+	
+	</target>
+
+	<target name="build-puppet-modules">
+
+		<mkdir dir="${basedir}/puppet/modules" />
+		
+		<git-export repository="git://github.com/NoStressCommerceCZ/virtualdev-module-puppet-apt.git" dest="${puppet.modules.location}" />
+		<git-export repository="git://github.com/puppetlabs/puppetlabs-create_resources.git" dest="${puppet.modules.location}/create_resources" />
+		<git-export repository="git://github.com/puppetlabs/puppetlabs-stdlib.git" dest="${puppet.modules.location}/stdlib" />
+		<git-export repository="git://github.com/puppetlabs/puppetlabs-mysql.git" dest="${puppet.modules.location}/mysql" />
+		
+		
+		<git-export repository="git://github.com/garthk/puppet-elasticsearch.git" dest="${puppet.modules.location}/elasticsearch" />
+		<get src="${es_source}/${es_tarchive}" dest="${puppet.modules.location}/elasticsearch/files/${es_tarchive}" verbose="true" />
+		
+		<git-export repository="git://github.com/NoStressCommerceCZ/virtualdev-module-puppet-zendserverce.git" dest="${puppet.modules.location}/" />
+		<git-export repository="git://github.com/NoStressCommerceCZ/virtualdev-module-puppet-phpmyadmin.git" dest="${puppet.modules.location}/" />
+		
+	</target>
+	
+	<macrodef name = "git">
+    <attribute name = "command" />
+    <attribute name = "dir" default = "" />
+    <element name = "args" optional = "true" />
+    <sequential>
+        <echo message = "git @{command}" />
+        <exec executable = "${git.bin}" dir = "@{dir}">
+            <arg value = "@{command}" />
+            <args/>
+        </exec>
+    </sequential>
+	</macrodef>
+	
+	<macrodef name = "git-clone">
+    <attribute name = "repository" />
+    <attribute name = "dest" />
+    <sequential>
+        <git command = "clone">
+            <args>
+                <arg value = "@{repository}" />
+                <arg value = "@{dest}" />
+            </args>
+        </git>
+    </sequential>
+	</macrodef>
+	
+	<macrodef name = "git-export">
+    <attribute name = "repository" />
+    <attribute name = "dest" />
+    <sequential>
+    
+    		<mkdir dir="${basedir}/tmp" />
+    		<mkdir dir="@{dest}" />
+    		
+    		<git-clone repository="@{repository}" dest="${basedir}/tmp" />
+    		
+			<delete file="${basedir}/tmp/README.md" />
+    		
+    		<copy todir="@{dest}">
+				<fileset dir="${basedir}/tmp" />
+			</copy>
+			
+			<delete dir="${basedir}/tmp" />
+			
+
+    </sequential>
+	</macrodef>
+	
+	<macrodef name = "git-clone-pull">
+    <attribute name = "repository" />
+    <attribute name = "dest" />
+    <sequential>
+        <git command = "clone">
+            <args>
+                <arg value = "@{repository}" />
+                <arg value = "@{dest}" />
+            </args>
+        </git>
+        <git command = "pull" dir = "@{dest}" />
+    </sequential>
+	</macrodef>
+
+</project>
