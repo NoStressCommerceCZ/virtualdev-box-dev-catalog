@@ -50,4 +50,9 @@ Pack new box
 ## Distribute a box
 
 Now you would upload box file into publicly available repository.
-In case of NoStress it's file.nostresscommerce.com/vagrant/virtualdev-box-dev-catalog.box	
+In case of NoStress it's http://file.nostresscommerce.com/vagrant/virtualdev-box-dev-catalog.box
+
+## Dependencies
+
+ * Vagrant (http://vagrantup.com)
+ * Ant (http://ant.apache.org) 	
