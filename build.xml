@@ -31,7 +31,7 @@
 		<git-export repository="git://github.com/puppetlabs/puppetlabs-mysql.git" dest="${puppet.modules.location}/mysql" />
 		
 		
-		<git-export repository="git://github.com/garthk/puppet-elasticsearch.git" dest="${puppet.modules.location}/elasticsearch" />
+		<git-export repository="git://github.com/NoStressCommerceCZ/virtualdev-module-puppet-elasticsearch.git" dest="${puppet.modules.location}" />
 		<get src="${es_source}/${es_tarchive}" dest="${puppet.modules.location}/elasticsearch/files/${es_tarchive}" verbose="true" />
 		
 		<git-export repository="git://github.com/NoStressCommerceCZ/virtualdev-module-puppet-zendserverce.git" dest="${puppet.modules.location}/" />

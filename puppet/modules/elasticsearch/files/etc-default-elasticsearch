@@ -3,5 +3,7 @@ ES_GROUP="elasticsearch"
 ES_MIN_MEM="256m"
 ES_MAX_MEM="2g"
 ES_JAVA_OPTS="-Des.config=/etc/elasticsearch/elasticsearch.yml"
+ES_HEAP_SIZE=512
+
 
 export ES_MIN_MEM ES_MAX_MEM ES_JAVA_OPTS

@@ -64,7 +64,7 @@ class elasticsearch(
 
   file { $tmptarchive:
     ensure  => present,
-    source  => "puppet:///elasticsearch/${tarchive}",
+    source  => "puppet:///modules/elasticsearch/${tarchive}",
     owner   => 'elasticsearch',
     mode    => '0644',
   }
@@ -108,8 +108,8 @@ class elasticsearch(
 
   file { $configfile:
     ensure => present,
-    source => ["puppet:///files/site-elasticsearch/${fqdn}/elasticsearch.yml",
-               "puppet:///files/site-elasticsearch/elasticsearch.yml",
+    source => ["puppet:///modules/elasticsearch/site-elasticsearch/${fqdn}/elasticsearch.yml",
+               "puppet:///modules/elasticsearch/site-elasticsearch/elasticsearch.yml",
                "puppet:///modules/elasticsearch/elasticsearch.yml"],
     owner  => root,
     group  => root,
@@ -117,8 +117,8 @@ class elasticsearch(
 
   file { $logconfigfile:
     ensure => present,
-    source => ["puppet:///files/site-elasticsearch/${fqdn}/logging.yml",
-               "puppet:///files/site-elasticsearch/logging.yml",
+    source => ["puppet:///modules/elasticsearch/site-elasticsearch/${fqdn}/logging.yml",
+               "puppet:///modules/elasticsearch/site-elasticsearch/logging.yml",
                "puppet:///modules/elasticsearch/logging.yml"],
     owner  => root,
     group  => root,
@@ -126,17 +126,18 @@ class elasticsearch(
 
   file { $defaultsfile:
     ensure => present,
-    source => "puppet:///elasticsearch/etc-default-elasticsearch",
+    source => "puppet:///modules/elasticsearch/etc-default-elasticsearch",
   }
 
   file { $upstartfile:
     ensure => present,
-    source => "puppet:///elasticsearch/etc-init-elasticsearch.conf",
+    source => "puppet:///modules/elasticsearch/etc-init-elasticsearch.conf",
   }
-
+  
   service { 'elasticsearch':
-    ensure   => running, 
+    ensure => running,
     enable   => true,
-    provider => upstart,
+	 provider => 'upstart',
   }
+  
 }
