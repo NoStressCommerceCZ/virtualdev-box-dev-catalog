@@ -46,6 +46,20 @@ That will create new VM and run puppet provisioner. It can take a while.
 
 You should check that everything is corretly installed.
 
+### Size does matter!
+Having an environment you can send and have others boot up is really neat, but not very portable if your file is a 5 GB download. Even 1 GB is pushing the limits. You should aim for a final Box size of no more than 500 MB. In order to achieve that size, there is a few things you can do.
+
+Install the operating system without a GUI. That is, when prompted, deselect the option to install a desktop environment. On a Debian Lenny install, the final size difference between an OS with and without a desktop environment was a whole 1 GB.
+
+Clear the system cache before you export at the end. You don't need tmp files, or cached system packages. In the case of Debian or Ubuntu based operating systems, you can clean the cache with 
+
+	apt-get clean
+	
+Either keep RubyGems from installing documentation, using --no-rdoc --no-ri or consider removing all documentation afterwards using 
+
+	rm -r "$(gem env gemdir)"/doc/*
+
+
 ### Export a box
 
 Run vagrant command for create a vagrant box. 
