@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="virtualdev-catalogue">
+<project name="virtualdev-box-dev-catalog">
 
 
 	<property name="puppet.modules.location" location="${basedir}/puppet/modules" />

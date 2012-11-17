@@ -1,7 +1,7 @@
 /**
  * Example of simple node
  */
-  
+ 
 node default {
 
 	include apt	
@@ -35,48 +35,16 @@ node default {
 	  php_version      => '5.3',
 	}
 	include zendserverce::service
-	
-	zendserverce::vhost { 'example-site.com':
-		server_name	=> 'example-site.com',
-		serveraliases => [
-			'www.example-site.com',
-			'asset1.example-site.com',
-			'asset2.example-site.com',
-			'asset3.example-site.com',
-			'asset4.example-site.com',
-		],
-	}                    	
-	
-	$index_php_content = "
-	<?php
-	    echo '<h1>Hi!</h1>';
-	    echo 'Today is ' . date('Y-M-d') ;	    
-	"
- 	
-	file { "/var/www/example-site.com/index.php":
-      content => "${index_php_content}", 
-   }
      	
 	include phpmyadmin_zendserver
-	
-	Class['apt'] -> Package ['php5-cli']
-	package { "php5-cli":
-   	ensure => "latest"
-	}
-	
-	Package ['php5-cli'] -> Class['pear']
-	
+		
 	Class['apt'] -> Class['pear']
 	Class['zendserverce::install'] -> Class['pear']
 	Class['apt'] -> Class['phpqatools']
 	Class['zendserverce::install'] -> Class['phpqatools']
 	Class['pear'] -> Class['phpqatools']
 	
-	
-	
 	include pear
 	include phpqatools
-	
-	
 	
 }
