@@ -20,7 +20,7 @@ The following packages are installed into final box
 ### Clone the repository
 You can clone the repository with command
 
-	git://github.com/NoStressCommerceCZ/virtualdev-box-dev-catalog.git
+	git clone git://github.com/NoStressCommerceCZ/virtualdev-box-dev-catalog.git
 	
 and don't forget to switch inside
 
