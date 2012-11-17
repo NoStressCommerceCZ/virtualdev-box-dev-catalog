@@ -59,4 +59,24 @@ node default {
      	
 	include phpmyadmin_zendserver
 	
+	Class['apt'] -> Package ['php5-cli']
+	package { "php5-cli":
+   	ensure => "latest"
+	}
+	
+	Package ['php5-cli'] -> Class['pear']
+	
+	Class['apt'] -> Class['pear']
+	Class['zendserverce::install'] -> Class['pear']
+	Class['apt'] -> Class['phpqatools']
+	Class['zendserverce::install'] -> Class['phpqatools']
+	Class['pear'] -> Class['phpqatools']
+	
+	
+	
+	include pear
+	include phpqatools
+	
+	
+	
 }

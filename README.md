@@ -67,4 +67,5 @@ In case of NoStress it's http://file.nostresscommerce.com/vagrant/virtualdev-box
 ## Dependencies
 
  * Vagrant (http://vagrantup.com)
- * Ant (http://ant.apache.org) 	
+ * Ant (http://ant.apache.org)
+ * Git  	
