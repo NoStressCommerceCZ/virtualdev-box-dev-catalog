@@ -47,4 +47,71 @@ node default {
 	include pear
 	include phpqatools
 	
+	file { '/usr/bin/phpunit':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpunit',
+	}
+	
+	file { '/usr/bin/phpcpd':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpcpd',
+	}
+	
+	file { '/usr/bin/phpcs':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpcs',
+	}
+
+	file { '/usr/bin/pdepend':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/pdepend',
+	}
+	
+	file { '/usr/bin/phpdoc':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpdoc',
+	}
+	
+	file { '/usr/bin/phpcb':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpcb',
+	}
+		s
+	
+	file { '/usr/bin/phpdcd':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpdcd',
+	}
+	
+	file { '/usr/bin/phpdox':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpdox',
+	}
+	
+	file { '/usr/bin/phpize':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpize',
+	}
+	
+	file { '/usr/bin/phploc':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phploc',
+	}
+	
+	file { '/usr/bin/phpmd':
+		require => Class["phpqatools"],
+	   ensure => 'link',
+	   target => '/usr/local/zend/bin/phpmd',
+	}
+
 }
