@@ -82,7 +82,6 @@ node default {
 	   ensure => 'link',
 	   target => '/usr/local/zend/bin/phpcb',
 	}
-		s
 	
 	file { '/usr/bin/phpdcd':
 		require => Class["phpqatools"],
